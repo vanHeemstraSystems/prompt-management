@@ -4,15 +4,15 @@ nombre-repositorio
 
 > línea de bala
 
--   [Documentación](./DOCUMENTATION.md)
+-   [Documentation](./DOCUMENTATION.md)
 -   [Glosario](./GLOSSARY.md)
 -   [Imágenes](./IMAGES.md)
 -   [Referencias](./REFERENCES.md)
 -   [Telemetria](./TELEMETRY.md)
 
-**Resumen ejecutivo**
+**Executive Summary**
 
-Text
+Texto
 
 ## 100 - Introducción
 
@@ -28,4 +28,4 @@ Ver[README.md](./300/README.md)
 
 ## 400 - Conclusión
 
-Ver[README.md](./400/README.md)
+See [README.md](./400/README.md)
