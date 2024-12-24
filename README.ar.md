@@ -10,7 +10,7 @@
 
 * * *
 
-> Slugline
+> سلوجلاين
 
 -   [التوثيق](./DOCUMENTATION.md)
 -   [مسرد](./GLOSSARY.md)
@@ -23,7 +23,7 @@
 
 نص
 
-## 100- مقدمة
+## 100 - Introduction
 
 يرى[README.md](./100/README.md)
 
@@ -33,7 +33,7 @@
 
 ## 300 – بناء تطبيقنا
 
-See [README.md](./300/README.md)
+يرى[README.md](./300/README.md)
 
 ## 400 - الخاتمة
 
