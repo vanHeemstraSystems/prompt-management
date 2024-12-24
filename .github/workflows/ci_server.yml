@@ -69,4 +69,4 @@ jobs:
   #     - name: Health Check
   #       run: |
   #         sleep 60
-  #         curl https://prompt-management-server-${{ steps.set-env.outputs.environment }}.yourdomain.com/health
+  #         curl https://prompt-management-server-${{ steps.set-env.outputs.environment }}.vanheemstrasystems.com/health

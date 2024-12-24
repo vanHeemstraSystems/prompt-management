@@ -1,0 +1,133 @@
+# See https://stackoverflow.com/questions/29261811/use-docker-compose-env-variable-in-dockerbuild-file
+services:
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.dev
+      args:
+        # from env_file
+        IMAGE_REPOSITORY: ${IMAGE_REPOSITORY}
+        IMAGE_REPOSITORY_DIVISION: ${IMAGE_REPOSITORY_DIVISION}
+        PROXY_USER: ${PROXY_USER}
+        PROXY_PASSWORD: ${PROXY_PASSWORD}
+        PROXY_FQDN: ${PROXY_FQDN}
+        PROXY_PORT: ${PROXY_PORT}
+    env_file:
+      - .env
+    container_name: ${UNIQUE_NAMESPACE}-frontend-dev
+    privileged: true
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "80:5173"
+    volumes:
+      - frontend:/usr/src/app
+      - /usr/src/app/node_modules
+    networks:
+      - prompt-management-network
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile.dev
+      args:
+        # from env_file
+        IMAGE_REPOSITORY: ${IMAGE_REPOSITORY}
+        IMAGE_REPOSITORY_DIVISION: ${IMAGE_REPOSITORY_DIVISION}
+        PROXY_USER: ${PROXY_USER}
+        PROXY_PASSWORD: ${PROXY_PASSWORD}
+        PROXY_FQDN: ${PROXY_FQDN}
+        PROXY_PORT: ${PROXY_PORT}
+    env_file:
+      - .env
+    container_name: ${UNIQUE_NAMESPACE}-server-dev
+    privileged: true
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "8080:5000"
+    # networks:
+    #   - gateway-dev
+
+  database:
+    build:
+      context: ./database
+      dockerfile: Dockerfile.dev
+      args:
+        IMAGE_REPOSITORY: ${IMAGE_REPOSITORY}
+        IMAGE_REPOSITORY_DIVISION: ${IMAGE_REPOSITORY_DIVISION}
+    env_file:
+      - .env
+    container_name: ${UNIQUE_NAMESPACE}-database-dev
+    environment:
+      POSTGRES_USER: "db-user-dev"
+      POSTGRES_PASSWORD: ${secrets.DB_PASSWORD}
+      POSTGRES_DB: "message_board_db"
+      PGDATA: "/var/lib/postgresql/data/pgdata"
+    ports:
+      - "5432:5432"
+    volumes:
+      - prompt-management-data:/var/lib/postgresql/data
+    user: postgres
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U db-user-dev -d message_board_db" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    deploy:
+      resources:
+        limits:
+          cpus: '1'
+          memory: 1G
+        reservations:
+          cpus: '0.5'
+          memory: 512M
+    networks:
+      - prompt-management-network
+
+  db-gui:
+    image: dbeaver/cloudbeaver:latest
+    container_name: ${UNIQUE_NAMESPACE}-db-gui-dev
+    environment:
+      CB_ADMIN_NAME: "cbadmin"
+      CB_ADMIN_PASSWORD: ${secrets.CB_ADMIN_PASSWORD}
+      CB_SERVER_NAME: "Message Board DB"
+      CB_SERVER_URL: "http://localhost:8978"
+      CB_ANONYMOUS_ACCESS_ENABLED: "false"
+      CB_DEFAULT_CONNECTION_NAME: "Message Board PostgreSQL"
+      CB_DEFAULT_CONNECTION_HOST: "database"
+      CB_DEFAULT_CONNECTION_PORT: "5432"
+      CB_DEFAULT_CONNECTION_DATABASE: "message_board_db"
+      CB_DEFAULT_CONNECTION_USER: "db-user-dev"
+      CB_DEFAULT_CONNECTION_PASSWORD: ${secrets.DB_PASSWORD}
+    ports:
+      - "8978:8978"
+    depends_on:
+      - database
+    volumes:
+      - cloudbeaver-data:/opt/cloudbeaver/workspace
+    networks:
+      - prompt-management-network
+
+# see https://stackoverflow.com/questions/45255066/create-networks-automatically-in-docker-compose
+networks:
+  default:
+    driver: bridge
+  prompt-management-network:
+    driver: bridge
+  # gateway-dev:
+  #   external: true
+  #   name: gateway-dev
+
+volumes:
+  prompt-management-data:
+    driver: local
+  dbvis-config:
+    driver: local 
+  cloudbeaver-data:
+    driver: local
+  frontend:
+    driver: local
+  cloudbeaver-config:
+    driver: local

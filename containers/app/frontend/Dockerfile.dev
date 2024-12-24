@@ -1,35 +1,24 @@
-FROM node:20.11.1-bullseye-slim
+FROM node:20-slim AS base
 
-# Add error handling and verbose output
-ENV NPM_CONFIG_LOGLEVEL=verbose
-ENV NODE_OPTIONS="--max-old-space-size=4096"
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
 
-# Update and install required packages
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    git \
-    python3 \
-    build-essential && \
-    rm -rf /var/lib/apt/lists/*
+FROM base AS dev
 
-# Install specific versions of npm and pnpm
-RUN npm install -g npm@10.2.4 && \
-    npm install -g pnpm@8.15.1
+# Copy package files first to leverage Docker cache
+COPY containers/app/frontend/package.json /usr/src/app/
+COPY containers/app/frontend/pnpm-lock.yaml /usr/src/app/
 
 WORKDIR /usr/src/app
 
-# Copy package files
-COPY package.json ./
-COPY pnpm-lock.yaml ./
+RUN pnpm fetch
 
-# Install dependencies with increased timeout
-RUN pnpm install --fetch-timeout 100000
+# Copy the entire frontend directory structure
+COPY containers/app/frontend/ /usr/src/app/
 
-# Copy source files
-COPY . .
+# Install dependencies
+RUN pnpm install
 
-# Expose port
-EXPOSE 3000
-
-# Start development server
-CMD ["pnpm", "dev", "--host"]
+EXPOSE 5173
+CMD [ "pnpm", "run", "dev", "--host" ]
