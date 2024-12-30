@@ -12,6 +12,7 @@
 
 > سلوجلاين
 
+-   [DNS](./DNS.md)
 -   [التوثيق](./DOCUMENTATION.md)
 -   [مسرد](./GLOSSARY.md)
 -   [الصور](./IMAGES.md)
