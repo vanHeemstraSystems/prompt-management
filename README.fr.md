@@ -12,6 +12,7 @@ gestion rapide
 
 > Slugline
 
+-   [DNS](./DNS.md)
 -   [Documentation](./DOCUMENTATION.md)
 -   [Glossaire](./GLOSSARY.md)
 -   [Images](./IMAGES.md)
