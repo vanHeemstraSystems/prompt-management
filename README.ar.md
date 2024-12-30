@@ -10,14 +10,14 @@
 
 * * *
 
-> Slugline
+> سلوجلاين
 
 -   [التوثيق](./DOCUMENTATION.md)
 -   [مسرد](./GLOSSARY.md)
 -   [الصور](./IMAGES.md)
 -   [Podman](./PODMAN.md)
 -   [مراجع](./REFERENCES.md)
--   [القياس عن بعد](./TELEMETRY.md)
+-   [Telemetry](./TELEMETRY.md)
 
 **ملخص تنفيذي**
 
@@ -29,7 +29,7 @@
 
 ## 200 - المتطلبات
 
-يرى[README.md](./200/README.md)
+See [README.md](./200/README.md)
 
 ## 300 – بناء تطبيقنا
 
