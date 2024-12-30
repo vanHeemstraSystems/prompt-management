@@ -12,6 +12,7 @@ Prompt-Management
 
 > Slugline
 
+-   [DNS](./DNS.md)
 -   [Dokumentation](./DOCUMENTATION.md)
 -   [Glossar](./GLOSSARY.md)
 -   [Bilder](./IMAGES.md)
@@ -19,7 +20,7 @@ Prompt-Management
 -   [Referenzen](./REFERENCES.md)
 -   [Telemetrie](./TELEMETRY.md)
 
-**Executive Summary**
+**Zusammenfassung**
 
 Text
 
