@@ -1,5 +1,5 @@
-repository-name
-# Repository Name
+prompt-management
+# Prompt Management
 
 | | |
 | --- | --- |
@@ -11,6 +11,7 @@ repository-name
 
 > Slugline
 
+- [DNS](./DNS.md)
 - [Documentation](./DOCUMENTATION.md)
 - [Glossary](./GLOSSARY.md)
 - [Images](./IMAGES.md)
