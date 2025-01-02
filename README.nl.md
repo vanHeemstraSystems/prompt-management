@@ -24,7 +24,7 @@ snel beheer
 
 Tekst
 
-## 100 - Inleiding
+## 100 - Introduction
 
 Zien[README.md](./100/README.md)
 
