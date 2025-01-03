@@ -14,11 +14,11 @@ snel beheer
 
 -   [DNS](./DNS.md)
 -   [Documentatie](./DOCUMENTATION.md)
--   [Glossarium](./GLOSSARY.md)
+-   [Glossary](./GLOSSARY.md)
 -   [Gastheren](./HOSTS.md)
 -   [Afbeeldingen](./IMAGES.md)
 -   [Ingetogen](./PODMAN.md)
--   [Referenties](./REFERENCES.md)
+-   [References](./REFERENCES.md)
 -   [Telemetrie](./TELEMETRY.md)
 
 **Samenvatting**
