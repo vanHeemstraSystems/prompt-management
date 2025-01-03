@@ -2,7 +2,7 @@
 
 ## Hetzner
 
-To connect via SSH to Hetzner use the following instructions:
+To connect via SSH to Hetzner use [the following instructions](https://serverfault.com/questions/295768/how-do-i-connect-to-ssh-with-a-different-public-key):
 
 Make sure the ```~/.ssh/config``` file contains a reference to Hetzner:
 
