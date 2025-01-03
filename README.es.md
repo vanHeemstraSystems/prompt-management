@@ -15,6 +15,7 @@ gestión rápida
 -   [DNS](./DNS.md)
 -   [Documentación](./DOCUMENTATION.md)
 -   [Glosario](./GLOSSARY.md)
+-   [Anfitriones](./HOSTS.md)
 -   [Imágenes](./IMAGES.md)
 -   [Suave](./PODMAN.md)
 -   [Referencias](./REFERENCES.md)
