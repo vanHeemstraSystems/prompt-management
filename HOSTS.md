@@ -6,13 +6,17 @@ To connect via SSH to Hetzner use [the following instructions](https://serverfau
 
 Make sure the ```~/.ssh/config``` file contains a reference to Hetzner:
 
-```
+``` text
 Host hetzner
   Hostname <hostname_or_ip>
   User <username>
   Port 22
   IdentityFile ~/.ssh/hetzner
   CertificateFile ~/.ssh/hetzner.pub
+  # Disable password authentication for better security
+  PasswordAuthentication no
+  # Prevent TCP forwarding if not needed
+  AllowTcpForwarding no
 ```
 ~/.ssh/config
 
