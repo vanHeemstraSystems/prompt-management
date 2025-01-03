@@ -14,6 +14,7 @@ prompt-management
 - [DNS](./DNS.md)
 - [Documentation](./DOCUMENTATION.md)
 - [Glossary](./GLOSSARY.md)
+- [Hosts](./HOSTS.md)
 - [Images](./IMAGES.md)
 - [Podman](./PODMAN.md)
 - [References](./REFERENCES.md)
