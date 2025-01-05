@@ -34,12 +34,3 @@ Use the Hetzner CLI:
 - ssh-keygen -f "/home/user/.ssh/known_hosts" -R "prompt-management.vanheemstrasystems.com"
 - ssh-keygen -f "/home/user/.ssh/known_hosts" -R "prompt-management.vanheemstrasystems.com"
 
-In the ~/.ssh/config file add:
-
-```
-Host prompt-management.vanheemstrasystems.com
-    HostName 167.235.17.108
-    User root
-    IdentityFile ~/.ssh/id_ed25519_hetzner
-    IdentitiesOnly yes
-```

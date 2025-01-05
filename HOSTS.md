@@ -7,12 +7,12 @@ To connect via SSH to Hetzner use [the following instructions](https://serverfau
 Make sure the ```~/.ssh/config``` file contains a reference to Hetzner:
 
 ``` text
-Host hetzner
-  Hostname <hostname_or_ip>
-  User <username>
+Host prompt-management.vanheemstrasystems.com
+  Hostname <hostname_or_ip> # here 167.235.17.108 
+  User <username> # here root
   Port 22
-  IdentityFile ~/.ssh/hetzner
-  CertificateFile ~/.ssh/hetzner.pub
+  IdentityFile ~/.ssh/id_ed25519_hetzner
+  CertificateFile ~/.ssh/id_ed25519_hetzner.pub
   # Disable password authentication for better security
   PasswordAuthentication no
   # Prevent TCP forwarding if not needed
@@ -28,5 +28,5 @@ Host hetzner
 Then all you have to do to connect is:
 
 ``` bash
-$ ssh hetzner
+$ ssh prompt-management.vanheemstrasystems.com
 ```
